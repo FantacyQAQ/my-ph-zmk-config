@@ -50,17 +50,6 @@
 
     };
 
-    overrides {
-        compatible = "zmk,behavior-key-overrides";
-        shift_space_caps: shift_space_caps {
-            bindings = <&kp CAPS>;     // 实际触发的键
-            delayed-mod-release;
-            key-codes = <SPACE>;       // 触发的基础键
-            layers = <0>;              // 在哪些层生效
-            modifiers = <(MOD_LSFT|MOD_RSFT)>; // 必须同时按住 Shift
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
