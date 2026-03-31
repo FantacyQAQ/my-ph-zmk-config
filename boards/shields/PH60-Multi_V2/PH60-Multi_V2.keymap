@@ -98,9 +98,9 @@
             display-name = "oneshot layer";
             bindings = <
 &tog 3 &kp F1    &kp F2    &kp F3          &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12       &trans   &trans
-&trans    &trans    &trans    &trans          &sys_reset  &trans  &trans    &trans    &tog 3    &trans    &kp PSCRN &kp UP  &trans       &studio_unlock
-&trans    &kp END  &kp PG_UP  &kp PG_DN       &kp HOME      &trans  &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT    &kp LEFT &kp RIGHT               &trans
-&trans    &trans    &trans    &kp DEL          &trans      &trans  &mo 2     &trans    &trans    &trans    &trans    &kp DOWN                  &trans    &trans
+&trans    &trans    &trans    &trans          &sys_reset  &trans  &trans    &trans    &tog 3    &trans    &kp PSCRN &trans  &trans       &studio_unlock
+&trans    &kp END  &kp PG_UP  &kp PG_DN       &kp HOME      &trans  &kp LEFT    &kp DOWN    &kp UP    &kp RIGHT    &trans &trans               &trans
+&trans    &trans    &trans    &kp DEL          &trans      &trans  &trans     &trans    &trans    &trans    &trans    &trans                  &trans    &trans
 &trans    &trans    &trans              &trans               &trans               &trans         &trans    &trans    &trans        &trans
             >;
         };
