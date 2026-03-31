@@ -39,6 +39,25 @@
             bindings = <&bt_clear_all_macro>, <&bt_clear_current_macro>;
         };
 
+        os_shift: os_shift {
+            comptible = "zmk,behavior-hold-tap";
+            label = "OS_SHIFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&sl>;
+        };
+
+        overrides {
+            compatible = "zmk,behavior-key-overrides";
+            shift_space_caps: shift_space_caps {
+                bindings = <&kp CAPS>;     // 实际触发的键
+                delayed-mod-release;
+                key-codes = <SPACE>;       // 触发的基础键
+                layers = <0>;              // 在哪些层生效
+                modifiers = <(MOD_LSFT|MOD_RSFT)>; // 必须同时按住 Shift
+            };
+        };
     };
 
     keymap {
@@ -47,21 +66,21 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8    &kp N9  &kp N0    &kp MINUS &kp EQUAL     &kp BSPC  &trans
-&kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I     &kp O   &kp P     &kp LBKT  &kp RBKT      &kp BSLH
-&kp CAPS  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K     &kp L   &kp SEMI  &kp SQT                 &kp RET
-&kp LSHFT &trans &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M     &kp COMMA &kp DOT &kp SLASH               &mt RSHFT UP &mo 3
-&kp LCTRL &kp LGUI &kp LALT        &kp SPACE        &kp SPACE        &kp SPACE      &kp RALT  &lt 1 LEFT     &mt RGUI DOWN     &mt RCTRL RIGHT
+&tog 1         &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8    &kp N9  &kp N0    &kp MINUS &kp EQUAL     &kp BSLH  &kp GRAVE
+&kp TAB        &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I     &kp O   &kp P     &kp LBKT  &kp RBKT      &kp BSPC
+&mt LCTRL ESC  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K     &kp L   &kp SEMI  &kp SQT                 &kp RET
+&os_shift LSHIFT 3 &trans &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M     &kp COMMA &kp DOT &kp SLASH           &os_shift RSHFT 3 &mo 1
+&kp LCTRL &kp LGUI &kp LALT        &kp SPACE        &kp SPACE        &kp SPACE      &kp RALT  &kp RALT     &kp RGUI     &kp RCTRL
             >;
         };
 
         function_layer {
             display-name = "Function";
             bindings = <
-&kp GRAVE &kp F1    &kp F2    &kp F3          &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12       &kp DEL   &trans
-&trans    &trans    &kp UP    &trans          &sys_reset  &trans  &trans    &trans    &trans    &trans    &kp PSCRN &kp HOME  &kp END       &studio_unlock
-&trans    &kp LEFT  &kp DOWN  &kp RIGHT       &trans      &trans  &trans    &trans    &trans    &trans    &kp PG_UP &kp PG_DN               &trans
-&trans    &trans    &trans    &trans          &trans      &trans  &mo 2     &trans    &trans    &trans    &trans    &trans                  &trans    &trans
+&kp GRAVE &kp F1    &kp F2    &kp F3          &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12       &trans   &trans
+&trans    &trans    &kp UP    &trans          &sys_reset  &trans  &trans    &trans    &tog 1    &trans    &kp PSCRN &kp UP  &trans          &studio_unlock
+&trans    &kp END  &kp PG_UP  &kp PG_DOWN     &kp HOME    &trans  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT    &kp LEFT &kp RIGHT               &trans
+&trans    &trans    &trans    &trans          &trans      &trans  &mo 2     &trans    &trans    &trans    &trans    &kp DOWN                  &trans    &trans
 &trans    &trans    &trans              &trans               &trans               &trans         &trans    &trans    &trans        &trans
             >;
         };
@@ -77,9 +96,15 @@
             >;
         };
 
-        extra1 {
-            display-name = "Extra 1";
-            status = "reserved";
+        oneshot_layer {
+            display-name = "Oneshot";
+            bindings = <
+&trans    &kp F1    &kp F2    &kp F3          &kp F4    &kp F5    &kp F6    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12       &trans   &trans
+&trans    &trans    &kp UP    &trans          &sys_reset  &trans  &trans    &trans    &trans    &trans    &kp PSCRN &kp UP  &trans          &studio_unlock
+&trans    &kp END  &kp PG_UP  &kp PG_DOWN     &kp HOME    &trans  &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT    &kp LEFT &kp RIGHT               &trans
+&trans    &trans    &trans    &trans          &trans      &trans  &trans     &trans    &trans    &trans    &trans    &kp DOWN                  &trans    &trans
+&trans    &trans    &trans              &trans               &trans               &trans         &trans    &trans    &trans        &trans
+            >;
         };
 
         extra2 {
