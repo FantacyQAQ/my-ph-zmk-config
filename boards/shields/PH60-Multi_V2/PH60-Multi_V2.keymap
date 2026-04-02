@@ -68,7 +68,7 @@
 &kp TAB   &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I     &kp O   &kp P     &kp LBKT  &kp RBKT      &kp BSPC
 &mt LCTRL ESC  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K     &kp L   &kp SEMI  &kp SQT                 &kp RET
 &os_shift LSHFT 3 &trans &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M     &kp COMMA &kp DOT &kp SLASH               &os_shift RSHFT 3 &mo 1
-&kp LCTRL &kp LALT &kp LGUI        &spc_caps        &spc_caps        &spc_caps      &kp RALT  &kp RGUI     &kp RALT     &mt RCTRL RIGHT
+&kp LCTRL &mt LALT HOME &mt LGUI PG_DN       &spc_caps        &spc_caps        &spc_caps      &mt RALT PG_UP  &mt RGUI PG_UP     &mt RALT END     &mt RCTRL RIGHT
             >;
         };
 
