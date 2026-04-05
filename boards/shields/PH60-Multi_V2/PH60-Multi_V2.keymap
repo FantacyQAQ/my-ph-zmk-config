@@ -43,7 +43,7 @@
             compatible = "zmk,behavior-hold-tap"; 
             label = "OS_SHIFT";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <230>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&sl>;
         };
